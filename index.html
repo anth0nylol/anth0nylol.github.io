@@ -25,7 +25,6 @@
     .btn-discord { position: absolute; top: 2rem; right: 2rem; background: var(--color-accent); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.9rem; }
     .mobile-nav { display: none; }
     @media (max-width: 600px) {
-      /* Nudge Discord button down just under mobile nav */
       .btn-discord { top: 2.9rem; }
       .mobile-nav { display: flex; position: fixed; top: 0; left: 0; right: 0; background: var(--color-bg); justify-content: space-around; padding: 0.5rem 0; z-index: 20; }
       .mobile-nav a { color: var(--color-primary); font-size: 0.85rem; }
@@ -39,7 +38,7 @@
     .indicator-card h3 { font-family: 'Merriweather', serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
     .indicator-card ul { list-style: none; margin-bottom: 1rem; flex: 1; }
     .indicator-card ul li::before { content: '•'; color: var(--color-accent); display: inline-block; width: 1em; }
-    .view-btn { background: var(--color-accent); color: var(--color-primary); padding: 0.75rem 1rem; border-radius: 6px; text-align: center; font-size: 0.9rem; margin-top: auto; }
+    .view-btn { background: var(--color-accent); color: var(--color-primary); padding: 0.75rem 1rem; border-radius: 6px; text-align: center; font-size: 0.9rem; margin-top: auto; display: inline-block; }
     .plans { position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: var(--color-cta-bg); padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1rem; z-index: 10; }
     .plan { text-align: center; }
     .plan h3 { font-size: 1rem; margin-bottom: 0.5rem; }
@@ -71,7 +70,11 @@
         <img src="atr-pro.png" alt="ATR Pro+ Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Pro+</h3>
-          <ul><li>Adaptive ATR S/R zones</li><li>Triple Sync CISD</li><li>Auto SL/TP & metrics</li></ul>
+          <ul>
+            <li>Adaptive ATR S/R zones</li>
+            <li>Triple Sync CISD</li>
+            <li>Auto SL/TP & metrics</li>
+          </ul>
           <a href="https://www.tradingview.com/script/hShdPeCb-ATR-Pro/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -80,7 +83,11 @@
         <img src="atr-core.png" alt="ATR Core Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Core</h3>
-          <ul><li>Multi-timeframe ATR</li><li>CISD & FS signals</li><li>Quick presets</li></ul>
+          <ul>
+            <li>Multi-timeframe ATR</li>
+            <li>CISD & FS signals</li>
+            <li>Quick presets</li>
+          </ul>
           <a href="https://www.tradingview.com/script/FNW6cZQM-ATR-Core/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -89,7 +96,11 @@
         <img src="atr-nexus.png" alt="ATR Nexus Pro Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Nexus Pro</h3>
-          <ul><li>ATR levels & filters</li><li>Timeframe confluence</li><li>One-click presets</li></ul>
+          <ul>
+            <li>ATR levels & filters</li>
+            <li>Timeframe confluence</li>
+            <li>One-click presets</li>
+          </ul>
           <a href="https://www.tradingview.com/script/ltIIHAp8-ATR-Nexus-Pro/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -98,7 +109,11 @@
         <img src="atr-trend.png" alt="ATR Trend Enhanced Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Trend Enhanced</h3>
-          <ul><li>Smoothed trend line</li><li>Dynamic bands</li><li>Delta & market state</li></ul>
+          <ul>
+            <li>Smoothed trend line</li>
+            <li>Dynamic bands</li>
+            <li>Delta & market state</li>
+          </ul>
           <a href="https://www.tradingview.com/script/MJ78qg35-ATR-Trend/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -107,7 +122,11 @@
         <img src="mtf-vwap.png" alt="MTF VWAP Screenshot" />
         <div class="indicator-card-content">
           <h3>MTF VWAP</h3>
-          <ul><li>7 timeframe VWAPs</li><li>Naked vs mitigated</li><li>Custom alerts</li></ul>
+          <ul>
+            <li>7 timeframe VWAPs</li>
+            <li>Naked vs mitigated</li>
+            <li>Custom alerts</li>
+          </ul>
           <a href="https://www.tradingview.com/script/h04oMdwa-MTF-VWAP/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -116,13 +135,53 @@
         <img src="mtf-poc.png" alt="MTF POC Screenshot" />
         <div class="indicator-card-content">
           <h3>MTF POC</h3>
-          <ul><li>Multi-timeframe POCs</li><li>Naked vs touched</li><li>Test alerts</li></ul>
+          <ul>
+            <li>Multi-timeframe POCs</li>
+            <li>Naked vs touched</li>
+            <li>Test alerts</li>
+          </ul>
           <a href="https://www.tradingview.com/script/GmMwPTF4-MTF-POC/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
       <!-- MTF Stat -->
       <div class="indicator-card">
-        <img src="mtf-stat.png" alt="MTF Stat Screenshot``` truncated for brevity`
+        <img src="mtf-stat.png" alt="MTF Stat Screenshot" />
+        <div class="indicator-card-content">
+          <h3>MTF Stat</h3>
+          <ul>
+            <li>Multi-timeframe HSR & ATR modes</li>
+            <li>Manipulation/Distribution levels</li>
+            <li>Custom session & confluence</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/Py39gpbH-MTF-Stat/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- Custom Sessions -->
+      <div class="indicator-card">
+        <img src="custom-sessions.png" alt="Custom Sessions Coming Soon" />
+        <div class="indicator-card-content">
+          <h3>Custom Sessions</h3>
+          <ul>
+            <li>Define up to 5 session ranges</li>
+            <li>High/Low/Midpoints & deviations</li>
+            <li>Flexible extension options</li>
+          </ul>
+          <span class="view-btn" style="opacity:0.6;cursor:not-allowed;">Coming Soon</span>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="plans">
+    <div class="plan"><h3>Monthly</h3><p>$50 / month</p><button onclick="Paddle.Checkout.open({ product: 'pri_01jxr5ee56jtmtvdwvnj6j2g52' });">Buy</button></div>
+    <div class="plan"><h3>Yearly</h3><p>$450 / year</p><button onclick="Paddle.Checkout.open({ product: 'pri_01jxr5hf2dd0jynpxhq9xz1msq' });">Buy</button></div>
+    <div class="plan"><h3>Lifetime</h3><p>$1000</p><button onclick="Paddle.Checkout.open({ product: 'pri_01jxr5k8awc36t2vnbvv4a11nh' });">Buy</button></div>
+  </div>
+  <footer><a href="index.html">Home</a> • <a href="tos.html">Terms</a> • <a href="privacy.html">Privacy</a> • <a href="refund.html">Refund</a></footer>
+  <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+  <script>Paddle.Setup({ vendor: 235559 });</script>
+</body>
+</html>
+
 
 
 
