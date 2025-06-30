@@ -184,19 +184,15 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .indicator-gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .indicator-gallery { grid-template-columns: repeat(2, 1fr); }
       .plans { right: 1rem; }
     }
     @media (max-width: 600px) {
-      .indicator-gallery {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
+      .indicator-gallery { grid-template-columns: 1fr; gap: 1.5rem; }
       .plans {
         position: fixed;
         bottom: 0; left: 0; right: 0;
+        top: auto;
         transform: none;
         flex-direction: row;
         justify-content: space-around;
@@ -210,6 +206,7 @@
         padding: 0.5rem;
       }
       .plan button { margin: 0; }
+      .container { padding-bottom: 80px; }
     }
   </style>
 </head>
@@ -227,11 +224,7 @@
         <img src="atr-pro.png" alt="ATR Pro+ Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Pro+</h3>
-          <ul>
-            <li>Adaptive ATR S/R zones</li>
-            <li>Triple Sync CISD</li>
-            <li>Auto SL/TP & metrics</li>
-          </ul>
+          <ul><li>Adaptive ATR S/R zones</li><li>Triple Sync CISD</li><li>Auto SL/TP & metrics</li></ul>
           <a href="https://www.tradingview.com/script/hShdPeCb-ATR-Pro/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -240,11 +233,7 @@
         <img src="atr-core.png" alt="ATR Core Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Core</h3>
-          <ul>
-            <li>Multi-timeframe ATR</li>
-            <li>CISD & FS signals</li>
-            <li>Quick presets</li>
-          </ul>
+          <ul><li>Multi-timeframe ATR</li><li>CISD & FS signals</li><li>Quick presets</li></ul>
           <a href="https://www.tradingview.com/script/FNW6cZQM-ATR-Core/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -253,11 +242,7 @@
         <img src="atr-nexus.png" alt="ATR Nexus Pro Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Nexus Pro</h3>
-          <ul>
-            <li>ATR levels & filters</li>
-            <li>Timeframe confluence</li>
-            <li>One-click presets</li>
-          </ul>
+          <ul><li>ATR levels & filters</li><li>Timeframe confluence</li><li>One-click presets</li></ul>
           <a href="https://www.tradingview.com/script/ltIIHAp8-ATR-Nexus-Pro/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -266,11 +251,7 @@
         <img src="atr-trend.png" alt="ATR Trend Enhanced Screenshot" />
         <div class="indicator-card-content">
           <h3>ATR Trend Enhanced</h3>
-          <ul>
-            <li>Smoothed trend line</li>
-            <li>Dynamic bands</li>
-            <li>Delta & market state</li>
-          </ul>
+          <ul><li>Smoothed trend line</li><li>Dynamic bands</li><li>Delta & market state</li></ul>
           <a href="https://www.tradingview.com/script/MJ78qg35-ATR-Trend/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -279,24 +260,16 @@
         <img src="mtf-vwap.png" alt="MTF VWAP Screenshot" />
         <div class="indicator-card-content">
           <h3>MTF VWAP</h3>
-          <ul>
-            <li>7 timeframe VWAPs</li>
-            <li>Naked vs mitigated</li>
-            <li>Custom alerts</li>
-          </ul>
+          <ul><li>7 timeframe VWAPs</li><li>Naked vs mitigated</li><li>Custom alerts</li></ul>
           <a href="https://www.tradingview.com/script/h04oMdwa-MTF-VWAP/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
       <!-- MTF POC -->
       <div class="indicator-card">
-        <img src="mtf-poc.png" alt="MTF POC Screenshot" />
+        <img src="mtf	poc.png" alt="MTF POC Screenshot" />
         <div class="indicator-card-content">
           <h3>MTF POC</h3>
-          <ul>
-            <li>Multi-timeframe POCs</li>
-            <li>Naked vs touched</li>
-            <li>Test alerts</li>
-          </ul>
+          <ul><li>Multi-timeframe POCs</li><li>Naked vs touched</li><li>Test alerts</li></ul>
           <a href="https://www.tradingview.com/script/GmMwPTF4-MTF-POC/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -305,11 +278,7 @@
         <img src="mtf-stat.png" alt="MTF Stat Screenshot" />
         <div class="indicator-card-content">
           <h3>MTF Stat</h3>
-          <ul>
-            <li>Multi-timeframe HSR & ATR modes</li>
-            <li>Manipulation/Distribution levels</li>
-            <li>Custom session & confluence</li>
-          </ul>
+          <ul><li>Multi-timeframe HSR & ATR modes</li><li>Manipulation/Distribution levels</li><li>Custom session & confluence</li></ul>
           <a href="https://www.tradingview.com/script/Py39gpbH-MTF-Stat/" class="view-btn" target="_blank">View on TradingView</a>
         </div>
       </div>
@@ -318,11 +287,7 @@
         <img src="custom-sessions.png" alt="Custom Sessions Coming Soon" />
         <div class="indicator-card-content">
           <h3>Custom Sessions</h3>
-          <ul>
-            <li>Define up to 5 session ranges</li>
-            <li>High/Low/Midpoints & deviations</li>
-            <li>Flexible extension options</li>
-          </ul>
+          <ul><li>Define up to 5 session ranges</li><li>High/Low/Midpoints & deviations</li><li>Flexible extension options</li></ul>
           <span class="view-btn" style="opacity:0.6;cursor:not-allowed;">Coming Soon</span>
         </div>
       </div>
@@ -338,3 +303,4 @@
   <script>Paddle.Setup({ vendor: 235559 });</script>
 </body>
 </html>
+
