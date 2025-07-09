@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anthony’s Lab Indicators</title>
+  <title>Anthony's Lab Indicators</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet"/>
   <style>
@@ -44,10 +44,11 @@
       }
     }
 
-    .btn-discord { position: absolute; top: 2rem; right: 2rem; background: var(--color-accent); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.9rem; }
+    .btn-member { position: absolute; top: 2rem; right: 2rem; background: var(--color-accent); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.9rem; transition: background 0.3s; }
+    .btn-member:hover { background: #5a5a5a; }
     .mobile-nav { display: none; }
     @media (max-width: 600px) {
-      .btn-discord { top: 2.9rem; }
+      .btn-member { top: 2.9rem; }
       .mobile-nav { display: flex; position: fixed; top: 0; left: 0; right: 0; background: var(--color-bg); justify-content: space-around; padding: 0.5rem 0; z-index: 20; }
       .mobile-nav a { color: var(--color-primary); font-size: 0.85rem; }
     }
@@ -74,9 +75,9 @@
 </head>
 <body>
   <section class="hero">
-    <h1>Anthony’s Lab Indicators</h1>
+    <h1>Anthony's Lab Indicators</h1>
     <p>Powerful PineScript tools for TradingView – explore features below or purchase via the buttons.</p>
-    <a href="https://discord.gg/YW9paQNE" class="btn-discord" target="_blank">Join Discord</a>
+    <a href="https://members.anthonyslab.shop/auth/sign_in" class="btn-member">Member Area</a>
     <svg viewBox="0 0 1440 80"><path fill="#1e1e1e" d="M0,64L1440,0L1440,80L0,80Z"/></svg>
   </section>
 
