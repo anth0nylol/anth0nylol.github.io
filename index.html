@@ -1,248 +1,421 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anthony's Lab Indicators</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anthony’s Lab</title>
+  <meta name="description" content="Real trading. Real results. — Anthony’s Lab trading tools, TikTok, and Discord." />
+  <meta property="og:title" content="Anthony’s Lab" />
+  <meta property="og:description" content="Real trading. Real results. — trading tools, TikTok, Discord." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f1115" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --color-bg: #1e1e1e;
-      --color-primary: #f0f0f0;
-      --color-accent: #4a4a4a;
-      --color-muted: #a0a0a0;
-      --color-card: #2a2a2a;
-      --color-cta-bg: rgba(17,17,17,0.9);
+    :root{
+      --bg:#0b0d12;         /* page background */
+      --panel:#10131a;      /* card/panel background */
+      --muted:#9aa3b2;      /* secondary text */
+      --text:#e6e9ef;       /* main text */
+      --brand:#7aa2ff;      /* primary accent */
+      --brand-2:#88f0ff;    /* secondary accent */
+      --ring:#1b2030;       /* ring/border */
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Poppins', sans-serif; background: var(--color-bg); color: var(--color-primary); display: flex; flex-direction: column; min-height: 100vh; }
-    a { text-decoration: none; }
-    .hero { position: relative; text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%); }
-    .hero h1 { font-family: 'Merriweather', serif; font-size: 3rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.25rem; max-width: 600px; margin: 0 auto 1.5rem; color: var(--color-muted); }
-    .hero svg { position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(122,162,255,.12), transparent 60%),
+                  radial-gradient(900px 700px at 80% 110%, rgba(136,240,255,.10), transparent 60%),
+                  var(--bg);
+      overflow-x:hidden;
+    }
+    .wrap{
+      min-height:100svh; /* full viewport */
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+    }
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px clamp(16px,4vw,48px);
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.4px
+    }
+    .pulse-dot{
+      position:relative;inline-size:10px;block-size:10px;border-radius:9999px;background:var(--brand);
+      box-shadow:0 0 18px rgba(122,162,255,.75);
+      animation:pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.75}}
 
-    /* Updated Disclaimer styling */
-    .site-disclaimer {
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--color-muted);
-      background: rgba(26,26,26,0.9);
-      padding: 0.75rem 1.5rem;
-      margin: 1.5rem auto;
-      border-radius: 4px;
-      max-width: 600px;
-      width: calc(100% - 3rem);
-      word-wrap: break-word;
-      line-height: 1.4;
+    main{
+      display:grid; place-items:center; padding:24px clamp(16px,4vw,48px);
     }
-    @media (max-width: 600px) {
-      .site-disclaimer {
-        margin: 1rem auto;
-        width: calc(100% - 2rem);
-      }
+    .hero{
+      max-width:1100px;width:100%;
+      display:grid;gap:28px;justify-items:center;text-align:center;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 12px;border-radius:999px;border:1px solid var(--ring);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.00));
+      color:var(--muted);font-size:13px
+    }
+    .title{font-weight:800;line-height:1.12;letter-spacing:-.02em;margin:0; overflow:visible}
+    .title span{background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent} 
+    .type-text{display:inline-block;position:relative;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      will-change: background-position, filter;}
+    /* Animated gradient that keeps shifting (constant life) */
+    .type-text.alive{ background-size:200% 100%; animation:text-gradient 7s linear infinite }
+    @keyframes text-gradient{ 0%{ background-position:0% 0 } 100%{ background-position:200% 0 } }
+    /* shine sweep through letters (repeats, subtle) */
+    .type-text.flash::after{content:"";position:absolute;inset:-2px;pointer-events:none;
+      background:linear-gradient(100deg, transparent 0%, rgba(255,255,255,.75) 12%, transparent 24%);
+      transform:translateX(-130%); filter:blur(.6px); animation:text-shine 1200ms ease forwards}
+    @keyframes text-shine{to{transform:translateX(130%)}}}
+    /* caret */
+    .caret{display:inline-block;width:1.5ch;margin-left:2px;}
+    .caret::after{content:"|";opacity:.9}
+    .typing .caret::after{animation:blink .9s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+    /* reduced motion: no typing, show full instantly */
+    @media (prefers-reduced-motion: reduce){
+      .type-text{transition:none}
+      .type-text.flash::after{display:none}
+      .caret{display:none}
+    }
+    .title.xl{font-size:clamp(32px,7.2vw,84px); position:relative; display:inline-block}
+    .sub{max-width:720px;color:var(--muted);font-size:clamp(14px,2.7vw,18px);line-height:1.6;margin:0}
+
+    /* Glass canvas panel */
+    .panel{
+      position:relative;inline-size:min(980px,95%);
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.07);
+      box-shadow:0 10px 45px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+    canvas{display:block;inline-size:100%;block-size:360px;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.00))}
+    .panel::after{ /* soft highlight */
+      content:"";position:absolute;inset:-1px;pointer-events:none;border-radius:inherit;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+    /* Ticker container (not used when script widgets are blocked) */
+    .ticker{inline-size:min(980px,95%);border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden;margin-top:4px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+      min-height:0; display:none; /* hidden since we’re using iframe chart only */
     }
 
-    .btn-member { position: absolute; top: 2rem; right: 2rem; background: var(--color-accent); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.9rem; transition: background 0.3s; }
-    .btn-member:hover { background: #5a5a5a; }
-    .mobile-nav { display: none; }
-    @media (max-width: 600px) {
-      .btn-member { top: 2.9rem; }
-      .mobile-nav { display: flex; position: fixed; top: 0; left: 0; right: 0; background: var(--color-bg); justify-content: space-around; padding: 0.5rem 0; z-index: 20; }
-      .mobile-nav a { color: var(--color-primary); font-size: 0.85rem; }
+    /* Responsive media wrapper for chart/video */
+    .iframe-wrap{position:relative; inline-size:min(980px,95%); border-radius:24px; overflow:hidden; border:1px solid rgba(255,255,255,.07);
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      box-shadow:0 10px 45px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
     }
-    .container { flex: 1; max-width: 1000px; margin: 0 auto; padding: 2rem; padding-bottom: 120px; }
-    .indicator-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
-    .indicator-card { background: var(--color-card); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
-    .indicator-card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,0.7); }
-    .indicator-card img { width: 100%; height: auto; }
-    .indicator-card-content { padding: 1.5rem; display: flex; flex-direction: column; }
-    .indicator-card h3 { font-family: 'Merriweather', serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .indicator-card ul { list-style: none; margin-bottom: 1rem; flex: 1; }
-    .indicator-card ul li::before { content: '•'; color: var(--color-accent); display: inline-block; width: 1em; }
-    .view-btn { background: var(--color-accent); color: var(--color-primary); padding: 0.75rem 1rem; border-radius: 6px; text-align: center; font-size: 0.9rem; margin-top: auto; display: inline-block; }
-    .plans { position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: var(--color-cta-bg); padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1rem; z-index: 10; }
-    .plan { text-align: center; }
-    .plan h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-    .plan p { color: var(--color-muted); margin-bottom: 0.75rem; }
-    .plan button { background: var(--color-accent); color: var(--color-primary); border: none; padding: 0.75rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; width: 100%; }
-    footer { text-align: center; padding: 1rem; font-size: 0.875rem; color: var(--color-muted); border-top: 1px solid #3a3a3a; margin-top: auto; }
-    footer a { color: var(--color-primary); margin: 0 0.5rem; }
-    @media (max-width: 900px) { .indicator-gallery { grid-template-columns: repeat(2, 1fr); } .plans { right: 1rem; } }
-    @media (max-width: 600px) { .indicator-gallery { grid-template-columns: 1fr; gap: 1.5rem; } .plans { position: fixed; bottom: 0; left: 0; right: 0; top: auto; transform: none; flex-direction: row; justify-content: space-around; padding: 0.5rem 1rem; border-radius: 0; } .container { padding-bottom: 80px; } .hero { padding-top: 5rem; } }
+    .iframe-wrap::after{content:""; position:absolute; inset:-1px; pointer-events:none; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+    .hero-video{display:block; inline-size:100%; block-size:360px; object-fit:cover; filter:contrast(1.04) saturate(1.02)}
+    .video-badge{position:absolute; bottom:10px; left:10px; padding:4px 10px; font-size:12px; border-radius:999px;
+      background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(6px)}
+
+    .cta{
+      display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:6px
+    }
+    .btn{
+      --b:var(--brand);
+      --mx:.5; /* mouse x (0..1) */
+      --my:.5; /* mouse y (0..1) */
+      padding:12px 18px;border-radius:14px;border:1px solid var(--ring);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      color:var(--text);text-decoration:none;font-weight:600;letter-spacing:.2px;
+      position:relative;overflow:hidden;transform:translateZ(0);
+      transition:transform .25s cubic-bezier(.22,.61,.36,1), border-color .2s ease, box-shadow .2s ease, filter .2s ease;
+      will-change: transform, filter;
+      perspective: 600px;
+    }
+    .btn:hover{border-color:rgba(122,162,255,.35);box-shadow:0 10px 28px rgba(122,162,255,.14); filter:saturate(1.05);
+      transform:
+        translate(calc((var(--mx) - .5) * 6px), calc((var(--my) - .5) * 6px))
+        rotateX(calc((.5 - var(--my)) * 6deg))
+        rotateY(calc((var(--mx) - .5) * 6deg));
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn .shine{position:absolute;inset:-1px;transform:translateX(-120%);background:linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);filter:blur(.5px)}
+    .btn:hover .shine{animation:shine 1.1s ease}
+    @keyframes shine{to{transform:translateX(120%)}}
+
+    /* Glow ring that reacts to cursor position */
+    .btn::before{
+      content:""; position:absolute; inset:-2px; border-radius:inherit; pointer-events:none;
+      background: radial-gradient(220px 160px at calc(var(--mx)*100%) calc(var(--my)*100%), rgba(136,240,255,.25), rgba(136,240,255,0) 60%);
+      opacity:0; transition:opacity .25s ease;
+    }
+    .btn:hover::before{ opacity:.9 }
+
+    .btn.primary{border-color:rgba(122,162,255,.35);background:linear-gradient(180deg, rgba(122,162,255,.15), rgba(122,162,255,.05))}
+    .btn .icon{opacity:.8;margin-right:8px}
+
+    footer{padding:28px clamp(16px,4vw,48px);color:var(--muted);font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .foot-links{display:flex;gap:16px;flex-wrap:wrap}
+    .foot-links a{color:var(--muted);text-decoration:none}
+    .foot-links a:hover{color:var(--text)}
+    /* Motion safety */
+    @media (prefers-reduced-motion: reduce){
+      .pulse-dot{animation:none}
+      .btn:hover .shine{animation:none}
+    }
+
+    /* === Ambient Background: Subtle Particle Drift === */
+    /* === Live Background (no video) === */
+    .bg{position:fixed; inset:0; z-index:-2; overflow:hidden}
+    /* animated gradient mesh */
+    .mesh{position:absolute; inset:-20%; filter:blur(40px) saturate(120%); opacity:.55;
+      background:
+        radial-gradient(35% 40% at 20% 20%, rgba(122,162,255,.12), transparent 60%),
+        radial-gradient(30% 35% at 80% 25%, rgba(136,240,255,.10), transparent 60%),
+        radial-gradient(35% 40% at 50% 85%, rgba(140,170,255,.08), transparent 60%),
+        radial-gradient(30% 50% at 10% 90%, rgba(136,240,255,.06), transparent 60%),
+        radial-gradient(25% 35% at 95% 75%, rgba(122,162,255,.08), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.6));
+      animation: drift 28s ease-in-out infinite alternate;
+    }
+    @keyframes drift{ 0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(2%, -2%, 0) scale(1.03)} }
+
+    /* cursor-follow spotlight */
+    .spot{position:absolute; inset:0; pointer-events:none; --mx:50%; --my:40%;
+      background: radial-gradient(300px 220px at var(--mx) var(--my), rgba(136,240,255,.14), rgba(0,0,0,0) 60%);
+      transition: background-position .15s ease-out;
+    }
+
+    /* tidy up leftover styles */
+    .iframe-wrap,.hero-video,.video-badge{display:none}
+
+    /* Motion safety */
+    @media (prefers-reduced-motion: reduce){
+      .mesh{animation:none}
+      .spot{background: radial-gradient(340px 260px at 50% 38%, rgba(136,240,255,.10), rgba(0,0,0,0) 60%)}
+    }
+  
+    /* --- Random pulse pings (clean/minimal) --- */
+    .pulses{position:absolute; inset:0; pointer-events:none}
+    .ping{position:absolute; width:6px; height:6px; border-radius:9999px; transform:translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(136,240,255,0.9) 0%, rgba(136,240,255,0.6) 35%, rgba(136,240,255,0.0) 70%);
+      box-shadow: 0 0 14px rgba(136,240,255,0.45);
+      animation: ping 2.2s ease-out forwards; opacity: .85; filter:hue-rotate(0deg) blur(.2px);
+    }
+    @keyframes ping{ 0%{opacity:0; transform:translate(-50%,-50%) scale(.2)} 10%{opacity:.9} 65%{opacity:.35} 100%{opacity:0; transform:translate(-50%,-50%) scale(8)} }
+
+
+    /* --- Sweep lines (faint grid/DOM vibe) --- */
+    .sweeps{position:absolute; inset:0; pointer-events:none}
+    .sweepV{position:absolute; top:0; bottom:0; width:2px; left:-20px;
+      background: linear-gradient(to bottom, rgba(136,240,255,0), rgba(136,240,255,0.15), rgba(136,240,255,0));
+      filter: blur(.4px); opacity:0; will-change: transform, opacity;
+      animation: sweepV 6s cubic-bezier(.22,.61,.36,1) forwards;
+      box-shadow: 0 0 18px rgba(136,240,255,0.08);
+    }
+    @keyframes sweepV { 0%{ opacity:0; transform:translateX(0) } 15%{opacity:.6} 70%{opacity:.3} 100%{ opacity:0; transform:translateX(120vw) } }
   </style>
 </head>
 <body>
-  <section class="hero">
-    <h1>Anthony's Lab Indicators</h1>
-    <p>Powerful PineScript tools for TradingView – explore features below or purchase via the buttons.</p>
-    <a href="https://members.anthonyslab.shop/auth/sign_in" class="btn-member">Member Area</a>
-    <svg viewBox="0 0 1440 80"><path fill="#1e1e1e" d="M0,64L1440,0L1440,80L0,80Z"/></svg>
-  </section>
-
-  <!-- Disclaimer -->
-  <div class="site-disclaimer">
-    ⚠️ These indicators are for educational purposes only and do not constitute financial advice. Use proper risk management.
+  <!-- Live background layers -->
+  <div class="bg" aria-hidden="true">
+    <div class="mesh"></div>
+    <div class="spot"></div>
+    <div class="pulses" id="pulses"></div>
+    <div class="sweeps" id="sweeps"></div>
   </div>
 
-  <nav class="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="tos.html">Terms</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="refund.html">Refund</a>
-  </nav>
-  <div class="container">
-    <section class="indicator-gallery">
-      <!-- Institutional VWAPs -->
-      <div class="indicator-card">
-        <img src="inst-vwaps.png" alt="Institutional VWAPs Screenshot" />
-        <div class="indicator-card-content">
-          <h3>Institutional VWAPs</h3>
-          <ul>
-            <li>Multi-timeframe confluence detection</li>
-            <li>200-period rolling VWAP tracking</li>
-            <li>Standard deviation bands & alerts</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/dwS7RDrG-Institutional-VWAPs/" class="view-btn" target="_blank">View on TradingView</a>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="pulse-dot"></span><span>Anthony’s Lab</span></div>
+      <nav class="foot-links" aria-label="secondary">
+        <a href="#links">Links</a>
+        <a href="mailto:hello@anthonyslab.shop">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="badge" id="sessionBadge" aria-live="polite">Loading session…</div>
+        <h1 class="title xl typewrite" id="heroTitle">
+          <span id="typeText" class="type-text" aria-label="Consistency hits different."></span>
+          <span class="caret" aria-hidden="true"></span>
+        </h1>
+        <p class="sub" id="heroSub">Real trading. Real results.</p>
+
+        <div id="links" class="cta">
+          <a class="btn primary" href="https://www.tiktok.com/@nasdaqant" target="_blank" rel="noopener">
+            <span class="shine"></span>
+            <span class="icon">📹</span> TikTok
+          </a>
+          <a class="btn" href="https://discord.gg/your-invite" target="_blank" rel="noopener">
+            <span class="shine"></span>
+            <span class="icon">💬</span> Discord
+          </a>
+          <a class="btn" href="/indicators">
+            <span class="shine"></span>
+            <span class="icon">📈</span> Indicators
+          </a>
         </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Anthony’s Lab</span>
+      <div class="foot-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
       </div>
-      <!-- Extended VWAPs -->
-      <div class="indicator-card">
-        <img src="ext-vwaps.png" alt="Extended VWAPs Screenshot" />
-        <div class="indicator-card-content">
-          <h3>Extended VWAPs</h3>
-          <ul>
-            <li>Historical VWAP levels extended</li>
-            <li>Naked vs tested level tracking</li>
-            <li>9 timeframes with custom options</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/Xd9OGQ6X-Extended-VWAPS/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- MTF TWAP -->
-      <div class="indicator-card">
-        <img src="mtf-twap.png" alt="MTF TWAP Screenshot" />
-        <div class="indicator-card-content">
-          <h3>MTF TWAP</h3>
-          <ul>
-            <li>Time-weighted average price</li>
-            <li>Custom session definitions</li>
-            <li>Volume-independent analysis</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/gAhKe4ke-MTF-TWAP/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- MTF VWAP -->
-      <div class="indicator-card">
-        <img src="mtf-vwap.png" alt="MTF VWAP Screenshot" />
-        <div class="indicator-card-content">
-          <h3>MTF VWAP</h3>
-          <ul>
-            <li>Seven‐timeframe VWAP overlays</li>
-            <li>Naked vs mitigated VWAP views</li>
-            <li>Custom alert triggers</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/h04oMdwa-MTF-VWAP/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- ATR Pro+ -->
-      <div class="indicator-card">
-        <img src="atr-pro.png" alt="ATR Pro+ Screenshot" />
-        <div class="indicator-card-content">
-          <h3>ATR Pro+</h3>
-          <ul>
-            <li>Adaptive ATR S/R zones</li>
-            <li>Multi-asset CISD signal detection</li>
-            <li>One-click preset configurations</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/hShdPeCb-ATR-Pro/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- ATR Core -->
-      <div class="indicator-card">
-        <img src="atr-core.png" alt="ATR Core Screenshot" />
-        <div class="indicator-card-content">
-          <h3>ATR Core</h3>
-          <ul>
-            <li>Dynamic ATR S/R zones</li>
-            <li>Candle-flip & failure-swing alerts</li>
-            <li>Quick-start preset modes</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/FNW6cZQM-ATR-Core/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- ATR Nexus Pro -->
-      <div class="indicator-card">
-        <img src="atr-nexus.png" alt="ATR Nexus Pro Screenshot" />
-        <div class="indicator-card-content">
-          <h3>ATR Nexus Pro</h3>
-          <ul>
-            <li>Dynamic ATR S/R zones</li>
-            <li>Multi-timeframe ATR-flip alerts</li>
-            <li>One-click preset configurations</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/ltIIHAp8-ATR-Nexus-Pro/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- ATR Trend -->
-      <div class="indicator-card">
-        <img src="atr-trend.png" alt="ATR Trend Enhanced Screenshot" />
-        <div class="indicator-card-content">
-          <h3>ATR Trend</h3>
-          <ul>
-            <li>Smoothed trend line</li>
-            <li>Dynamic bands</li>
-            <li>Delta & market state</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/MJ78qg35-ATR-Trend/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- MTF POC -->
-      <div class="indicator-card">
-        <img src="mtf-poc.png" alt="MTF POC Screenshot" />
-        <div class="indicator-card-content">
-          <h3>MTF POC</h3>
-          <ul>
-            <li>Multi-timeframe POC levels</li>
-            <li>Naked vs touched POC alerts</li>
-            <li>Test-level notification</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/GmMwPTF4-MTF-POC/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-      <!-- MTF Stat -->
-      <div class="indicator-card">
-        <img src="mtf-stat.png" alt="MTF Stat Screenshot" />
-        <div class="indicator-card-content">
-          <h3>MTF Stat</h3>
-          <ul>
-            <li>Combined HSR & ATR mode overlays</li>
-            <li>Manipulation & distribution level indicators</li>
-            <li>Custom session & confluence controls</li>
-          </ul>
-          <a href="https://www.tradingview.com/script/Py39gpbH-MTF-Stat/" class="view-btn" target="_blank">View on TradingView</a>
-        </div>
-      </div>
-    </section>
+    </footer>
   </div>
-  <div class="plans">
-    <div class="plan">
-      <h3>Monthly</h3>
-      <p>$50 / month</p>
-      <button onclick="window.location.href='https://anthonyslab.memberful.com/checkout?plan=135764';">Buy</button>
-    </div>
-    <div class="plan">
-      <h3>Yearly</h3>
-      <p>$450 / year</p>
-      <button onclick="window.location.href='https://anthonyslab.memberful.com/checkout?plan=135765';">Buy</button>
-    </div>
-    <div class="plan">
-      <h3>Lifetime</h3>
-      <p>$1000</p>
-      <button onclick="window.location.href='https://anthonyslab.memberful.com/checkout?plan=135766';">Buy</button>
-    </div>
-  </div>
-  <footer><a href="index.html">Home</a> • <a href="tos.html">Terms</a> • <a href="privacy.html">Privacy</a> • <a href="refund.html">Refund</a></footer>
+
+  <script>
+    // Headline typewriter + shine effect
+    (function(){
+      const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const text = 'Consistency hits different.';
+      const target = document.getElementById('typeText');
+      const host = document.getElementById('heroTitle');
+      if(!target || !host){return}
+      function setText(t){ target.textContent = t; }
+      function startAlive(){
+        target.classList.add('alive');
+        // repeat the light sweep every ~9s
+        function sweep(){ if(document.hidden) return; target.classList.remove('flash'); void target.offsetWidth; target.classList.add('flash'); }
+        sweep(); setInterval(sweep, 9000);
+      }
+      if(prefersReduce){ setText(text); startAlive(); return; }
+      host.classList.add('typing');
+      let i = 0; const speed = 34; // ms per char
+      function step(){
+        if(i <= text.length){ setText(text.slice(0,i)); i++; setTimeout(step, speed); }
+        else{ host.classList.remove('typing'); startAlive(); }
+      }
+      step();
+    })();
+
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Cursor spotlight parallax (subtle)
+    (function(){
+      const spot = document.querySelector('.spot');
+      if(!spot) return;
+      function onMove(e){
+        const x = ('touches' in e)? e.touches[0].clientX : e.clientX;
+        const y = ('touches' in e)? e.touches[0].clientY : e.clientY;
+        spot.style.setProperty('--mx', (x/window.innerWidth*100)+'%');
+        spot.style.setProperty('--my', (y/window.innerHeight*100)+'%');
+      }
+      addEventListener('mousemove', onMove, {passive:true});
+      addEventListener('touchmove', onMove, {passive:true});
+    })();
+
+    // Random neat pulses (clean and occasional)
+    (function(){
+      const box = document.getElementById('pulses');
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+      if(!box || reduce.matches) return;
+
+      function spawn(x, y, hue){
+        const n = document.createElement('div');
+        n.className='ping';
+        n.style.left = x+'px'; n.style.top=y+'px';
+        n.style.filter = `hue-rotate(${hue}deg) blur(.2px)`;
+        n.addEventListener('animationend', ()=> n.remove());
+        box.appendChild(n);
+      }
+      function randomXY(){
+        const pad=40; return [ pad+Math.random()*(innerWidth-pad*2), pad+Math.random()*(innerHeight-pad*2) ];
+      }
+      function loop(){
+        const [x,y] = randomXY();
+        spawn(x,y, (Math.random()*16-8));
+        setTimeout(loop, 1200 + Math.random()*2200);
+      }
+      setTimeout(loop, 900);
+
+      // Small clusters every ~12–18s
+      setInterval(()=>{
+        const [bx,by] = randomXY();
+        const count = 2 + Math.floor(Math.random()*2);
+        for(let i=0;i<count;i++){
+          const jx = bx + (Math.random()*40 - 20);
+          const jy = by + (Math.random()*40 - 20);
+          setTimeout(()=> spawn(jx,jy,(Math.random()*12-6)), i*120);
+        }
+      }, 12000 + Math.random()*6000);
+
+      // Click feedback ping
+      addEventListener('click', (e)=> spawn(e.clientX, e.clientY, (Math.random()*10-5)) );
+    })();
+
+    // Periodic faint sweep line (vertical, moves left → right)
+    (function(){
+      const box = document.getElementById('sweeps');
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+      if(!box || reduce.matches) return;
+      function spawn(){
+        const el = document.createElement('div');
+        el.className = 'sweepV';
+        el.style.backgroundPosition = `center ${Math.random()*40-20}%`;
+        el.addEventListener('animationend', ()=> el.remove());
+        box.appendChild(el);
+      }
+      function loop(){ spawn(); setTimeout(loop, 60000 + Math.random()*20000); }
+      setTimeout(()=>{ spawn(); loop(); }, 2000);
+    })();
+
+    // Button magnetic hover JS (updates CSS vars per-button)
+    (function(){
+      const btns = document.querySelectorAll('.btn');
+      btns.forEach(btn=>{
+        btn.addEventListener('mousemove', (e)=>{
+          const r = btn.getBoundingClientRect();
+          const mx = (e.clientX - r.left) / r.width;
+          const my = (e.clientY - r.top) / r.height;
+          btn.style.setProperty('--mx', mx.toFixed(3));
+          btn.style.setProperty('--my', my.toFixed(3));
+        });
+        btn.addEventListener('mouseleave', ()=>{
+          btn.style.setProperty('--mx', .5);
+          btn.style.setProperty('--my', .5);
+        });
+      });
+    })();
+
+    // Live NY session badge
+    (function(){
+      const el = document.getElementById('sessionBadge');
+      if(!el) return;
+      function fmt(t){ return t.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
+      function calc(){
+        const now = new Date();
+        const nyNow = new Date(now.toLocaleString('en-US', {timeZone:'America/New_York'}));
+        const d = nyNow.getDay();
+        const open = new Date(nyNow); open.setHours(9,30,0,0);
+        const close= new Date(nyNow); close.setHours(16,0,0,0);
+        const wk = d>=1 && d<=5;
+        const status = (wk && nyNow>=open && nyNow<=close) ? 'NYSE: OPEN' : 'NYSE: CLOSED';
+        let next = open;
+        if(nyNow>close || !wk){
+          const nd = new Date(nyNow); nd.setDate(nd.getDate()+1);
+          while([0,6].includes(nd.getDay())) nd.setDate(nd.getDate()+1);
+          nd.setHours(9,30,0,0); next = nd;
+        }
+        el.textContent = `${status} • ${fmt(nyNow)} ET • Opens ${fmt(next)} ET`;
+      }
+      calc(); setInterval(calc, 30000);
+    })();
+  </script>
 </body>
 </html>
+
