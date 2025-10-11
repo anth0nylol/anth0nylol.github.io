@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anthony's Lab Indicators</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --color-bg: #1e1e1e;
+      --color-primary: #f0f0f0;
+      --color-accent: #4a4a4a;
+      --color-muted: #a0a0a0;
+      --color-card: #2a2a2a;
+      --color-cta-bg: rgba(17,17,17,0.9);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: var(--color-bg); color: var(--color-primary); display: flex; flex-direction: column; min-height: 100vh; }
+    a { text-decoration: none; }
+    .hero { position: relative; text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%); }
+    .hero h1 { font-family: 'Merriweather', serif; font-size: 3rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.25rem; max-width: 600px; margin: 0 auto 1.5rem; color: var(--color-muted); }
+    .hero svg { position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; }
+
+    /* Updated Disclaimer styling */
+    .site-disclaimer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      background: rgba(26,26,26,0.9);
+      padding: 0.75rem 1.5rem;
+      margin: 1.5rem auto;
+      border-radius: 4px;
+      max-width: 600px;
+      width: calc(100% - 3rem);
+      word-wrap: break-word;
+      line-height: 1.4;
+    }
+    @media (max-width: 600px) {
+      .site-disclaimer {
+        margin: 1rem auto;
+        width: calc(100% - 2rem);
+      }
+    }
+
+    .btn-member { position: absolute; top: 2rem; right: 2rem; background: var(--color-accent); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.9rem; transition: background 0.3s; }
+    .btn-member:hover { background: #5a5a5a; }
+    .mobile-nav { display: none; }
+    @media (max-width: 600px) {
+      .btn-member { top: 2.9rem; }
+      .mobile-nav { display: flex; position: fixed; top: 0; left: 0; right: 0; background: var(--color-bg); justify-content: space-around; padding: 0.5rem 0; z-index: 20; }
+      .mobile-nav a { color: var(--color-primary); font-size: 0.85rem; }
+    }
+    .container { flex: 1; max-width: 1000px; margin: 0 auto; padding: 2rem; padding-bottom: 120px; }
+    .indicator-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    .indicator-card { background: var(--color-card); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+    .indicator-card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,0.7); }
+    .indicator-card img { width: 100%; height: auto; }
+    .indicator-card-content { padding: 1.5rem; display: flex; flex-direction: column; }
+    .indicator-card h3 { font-family: 'Merriweather', serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .indicator-card ul { list-style: none; margin-bottom: 1rem; flex: 1; }
+    .indicator-card ul li::before { content: '•'; color: var(--color-accent); display: inline-block; width: 1em; }
+    .view-btn { background: var(--color-accent); color: var(--color-primary); padding: 0.75rem 1rem; border-radius: 6px; text-align: center; font-size: 0.9rem; margin-top: auto; display: inline-block; }
+    .plans { position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: var(--color-cta-bg); padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1rem; z-index: 10; }
+    .plan { text-align: center; }
+    .plan h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .plan p { color: var(--color-muted); margin-bottom: 0.75rem; }
+    .plan button { background: var(--color-accent); color: var(--color-primary); border: none; padding: 0.75rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; width: 100%; }
+    footer { text-align: center; padding: 1rem; font-size: 0.875rem; color: var(--color-muted); border-top: 1px solid #3a3a3a; margin-top: auto; }
+    footer a { color: var(--color-primary); margin: 0 0.5rem; }
+    @media (max-width: 900px) { .indicator-gallery { grid-template-columns: repeat(2, 1fr); } .plans { right: 1rem; } }
+    @media (max-width: 600px) { .indicator-gallery { grid-template-columns: 1fr; gap: 1.5rem; } .plans { position: fixed; bottom: 0; left: 0; right: 0; top: auto; transform: none; flex-direction: row; justify-content: space-around; padding: 0.5rem 1rem; border-radius: 0; } .container { padding-bottom: 80px; } .hero { padding-top: 5rem; } }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Anthony's Lab Indicators</h1>
+    <p>Powerful PineScript tools for TradingView – explore features below or purchase via the buttons.</p>
+    <a href="https://members.anthonyslab.shop/auth/sign_in" class="btn-member">Member Area</a>
+    <svg viewBox="0 0 1440 80"><path fill="#1e1e1e" d="M0,64L1440,0L1440,80L0,80Z"/></svg>
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="site-disclaimer">
+    ⚠️ These indicators are for educational purposes only and do not constitute financial advice. Use proper risk management.
+  </div>
+
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="tos.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="refund.html">Refund</a>
+  </nav>
+  <div class="container">
+    <section class="indicator-gallery">
+      <!-- Institutional VWAPs -->
+      <div class="indicator-card">
+        <img src="inst-vwaps.png" alt="Institutional VWAPs Screenshot" />
+        <div class="indicator-card-content">
+          <h3>Institutional VWAPs</h3>
+          <ul>
+            <li>Multi-timeframe confluence detection</li>
+            <li>200-period rolling VWAP tracking</li>
+            <li>Standard deviation bands & alerts</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/dwS7RDrG-Institutional-VWAPs/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- Extended VWAPs -->
+      <div class="indicator-card">
+        <img src="ext-vwaps.png" alt="Extended VWAPs Screenshot" />
+        <div class="indicator-card-content">
+          <h3>Extended VWAPs</h3>
+          <ul>
+            <li>Historical VWAP levels extended</li>
+            <li>Naked vs tested level tracking</li>
+            <li>9 timeframes with custom options</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/Xd9OGQ6X-Extended-VWAPS/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- MTF TWAP -->
+      <div class="indicator-card">
+        <img src="mtf-twap.png" alt="MTF TWAP Screenshot" />
+        <div class="indicator-card-content">
+          <h3>MTF TWAP</h3>
+          <ul>
+            <li>Time-weighted average price</li>
+            <li>Custom session definitions</li>
+            <li>Volume-independent analysis</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/gAhKe4ke-MTF-TWAP/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- MTF VWAP -->
+      <div class="indicator-card">
+        <img src="mtf-vwap.png" alt="MTF VWAP Screenshot" />
+        <div class="indicator-card-content">
+          <h3>MTF VWAP</h3>
+          <ul>
+            <li>Seven‐timeframe VWAP overlays</li>
+            <li>Naked vs mitigated VWAP views</li>
+            <li>Custom alert triggers</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/h04oMdwa-MTF-VWAP/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- ATR Pro+ -->
+      <div class="indicator-card">
+        <img src="atr-pro.png" alt="ATR Pro+ Screenshot" />
+        <div class="indicator-card-content">
+          <h3>ATR Pro+</h3>
+          <ul>
+            <li>Adaptive ATR S/R zones</li>
+            <li>Multi-asset CISD signal detection</li>
+            <li>One-click preset configurations</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/hShdPeCb-ATR-Pro/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- ATR Core -->
+      <div class="indicator-card">
+        <img src="atr-core.png" alt="ATR Core Screenshot" />
+        <div class="indicator-card-content">
+          <h3>ATR Core</h3>
+          <ul>
+            <li>Dynamic ATR S/R zones</li>
+            <li>Candle-flip & failure-swing alerts</li>
+            <li>Quick-start preset modes</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/FNW6cZQM-ATR-Core/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- ATR Nexus Pro -->
+      <div class="indicator-card">
+        <img src="atr-nexus.png" alt="ATR Nexus Pro Screenshot" />
+        <div class="indicator-card-content">
+          <h3>ATR Nexus Pro</h3>
+          <ul>
+            <li>Dynamic ATR S/R zones</li>
+            <li>Multi-timeframe ATR-flip alerts</li>
+            <li>One-click preset configurations</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/ltIIHAp8-ATR-Nexus-Pro/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- ATR Trend -->
+      <div class="indicator-card">
+        <img src="atr-trend.png" alt="ATR Trend Enhanced Screenshot" />
+        <div class="indicator-card-content">
+          <h3>ATR Trend</h3>
+          <ul>
+            <li>Smoothed trend line</li>
+            <li>Dynamic bands</li>
+            <li>Delta & market state</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/MJ78qg35-ATR-Trend/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- MTF POC -->
+      <div class="indicator-card">
+        <img src="mtf-poc.png" alt="MTF POC Screenshot" />
+        <div class="indicator-card-content">
+          <h3>MTF POC</h3>
+          <ul>
+            <li>Multi-timeframe POC levels</li>
+            <li>Naked vs touched POC alerts</li>
+            <li>Test-level notification</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/GmMwPTF4-MTF-POC/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+      <!-- MTF Stat -->
+      <div class="indicator-card">
+        <img src="mtf-stat.png" alt="MTF Stat Screenshot" />
+        <div class="indicator-card-content">
+          <h3>MTF Stat</h3>
+          <ul>
+            <li>Combined HSR & ATR mode overlays</li>
+            <li>Manipulation & distribution level indicators</li>
+            <li>Custom session & confluence controls</li>
+          </ul>
+          <a href="https://www.tradingview.com/script/Py39gpbH-MTF-Stat/" class="view-btn" target="_blank">View on TradingView</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <h3>Monthly</h3>
+      <p>$50 / month</p>
+      <button onclick="window.location.href='https://anthonyslab.memberful.com/checkout?plan=135764';">Buy</button>
+    </div>
+    <div class="plan">
+      <h3>Yearly</h3>
+      <p>$450 / year</p>
+      <button onclick="window.location.href='https://anthonyslab.memberful.com/checkout?plan=135765';">Buy</button>
+    </div>
+    <div class="plan">
+      <h3>Lifetime</h3>
+      <p>$1000</p>
+      <button onclick="window.location.href='https://anthonyslab.memberful.com/checkout?plan=135766';">Buy</button>
+    </div>
+  </div>
+  <footer><a href="index.html">Home</a> • <a href="tos.html">Terms</a> • <a href="privacy.html">Privacy</a> • <a href="refund.html">Refund</a></footer>
+</body>
+</html>
