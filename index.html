@@ -462,6 +462,59 @@ img { max-width: 100%; display: block; }
   position: relative;
   z-index: 2;
 }
+.pitch-lead {
+  font-family: 'Anton', 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4.4vw, 48px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 44px;
+}
+.pitch-lead .accent {
+  color: var(--purple-bright);
+  font-style: italic;
+}
+.filter-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+  padding: 28px 24px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.filter-name {
+  font-family: 'Anton', 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 4.2vw, 44px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--purple-bright);
+  text-shadow: 0 0 24px var(--purple-glow);
+  display: inline-block;
+}
+.filter-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: var(--text-dim);
+  font-weight: 400;
+  line-height: 1;
+}
+.pitch-tail {
+  font-size: 17px;
+  color: var(--text-mute);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 580px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .filter-flow { flex-direction: column; gap: 16px; padding: 32px 16px; }
+  .filter-arrow { transform: rotate(90deg); font-size: 18px; }
+}
 .placeholder-block {
   display: block;
   padding: 32px;
@@ -1219,9 +1272,15 @@ footer.site-footer {
     </div>
 
     <div class="model-pitch reveal">
-      Three filters. One trade.<br/>
-      <strong>Direction</strong> &mdash; find the DOL.&nbsp; <strong>Location</strong> &mdash; wait for the VWAP retest.&nbsp; <strong>Trigger</strong> &mdash; fire on absorption.<br/>
-      No noise, no guessing, no chasing. The exact framework, built to keep you patient and aligned with where institutions actually defend price.
+      <p class="pitch-lead">Three filters. <span class="accent">One trade.</span></p>
+      <div class="filter-flow">
+        <span class="filter-name">Direction</span>
+        <span class="filter-arrow">→</span>
+        <span class="filter-name">Location</span>
+        <span class="filter-arrow">→</span>
+        <span class="filter-name">Trigger</span>
+      </div>
+      <p class="pitch-tail">No noise. No guessing. No chasing. Built to keep you patient and aligned with where institutions actually defend price.</p>
     </div>
 
     <div class="model-pillars">
