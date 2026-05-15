@@ -644,6 +644,15 @@ img { max-width: 100%; display: block; }
     linear-gradient(90deg, rgba(176, 38, 255, 0.06) 1px, transparent 1px);
   background-size: 30px 30px;
 }
+.tool-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 2;
+}
 .tool-image-text {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
@@ -1241,7 +1250,7 @@ footer.site-footer {
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-value"><span class="accent">2</span></div>
+        <div class="hero-stat-value"><span class="accent">4</span></div>
         <div class="hero-stat-label">Indicators</div>
       </div>
       <div class="hero-stat">
@@ -1295,14 +1304,14 @@ footer.site-footer {
         <div class="pillar-num">// 02 · Location</div>
         <div class="pillar-title">VWAP Retest</div>
         <p class="pillar-body">
-          Once you have direction, you wait. The Institutional VWAPs indicator marks the exact mean-reversion zones where institutions defend fair value. Patience here is the difference between chasing a move and getting filled where it matters.
+          Once you have direction, you wait. The OnlyTicks VWAP indicator marks the exact mean-reversion zones where institutions defend fair value. Patience here is the difference between chasing a move and getting filled where it matters.
         </p>
       </div>
       <div class="pillar reveal">
         <div class="pillar-num">// 03 · Trigger</div>
         <div class="pillar-title">Absorption</div>
         <p class="pillar-body">
-          When price hits VWAP in your direction, Volume Bars shows you what the tape is doing in real time. Absorption at the level &mdash; institutions defending the line. That's the green light. Mechanical, repeatable, no guesswork.
+          When price hits VWAP in your direction, OnlyTicks Absorption shows you what the tape is doing in real time. Absorption at the level &mdash; institutions defending the line. That's the green light. Mechanical, repeatable, no guesswork.
         </p>
       </div>
     </div>
@@ -1319,53 +1328,87 @@ footer.site-footer {
         <span class="dot">◆</span> Indicator Engine <strong>Powered by Anthony's Lab</strong>
       </div>
       <div class="section-eyebrow">// The Tools</div>
-      <h2 class="display"><span class="chrome">Two Indicators.</span><br/><span class="chrome">One System.</span></h2>
-      <p>Institutional-grade orderflow and VWAP frameworks &mdash; built for TradingView, used by funded futures traders.</p>
+      <h2 class="display"><span class="chrome">Four Indicators.</span><br/><span class="chrome">One System.</span></h2>
+      <p>The full institutional toolkit &mdash; built for TradingView, used by funded futures traders. Every indicator in the OnlyTicks Model V2, in your hands.</p>
     </div>
 
     <div class="tools-grid">
       <div class="tool-card reveal">
         <div class="tool-image">
-          <div class="tool-image-text">
-            <span class="big">Volume Bars</span>
-            // chart preview
-          </div>
+          <img src="OnlyTicksDOL.png" alt="OnlyTicks DOL chart preview" />
         </div>
         <div class="tool-meta">
-          <span class="tool-tag">// Orderflow</span>
-          <h3 class="tool-name">Volume Bars</h3>
+          <span class="tool-tag">// Direction</span>
+          <h3 class="tool-name">OnlyTicks DOL</h3>
           <p class="tool-desc">
-            Six-class volume engine that reads the orderflow tape candle-by-candle. Identifies absorption, rejection, expansion, and exhaustion in real time.
+            ICT killzone session highs and lows across Asia, London, NY AM, NY Lunch, and NY PM. The Draw On Liquidity that anchors every trade idea in the model.
           </p>
           <ul class="tool-features">
-            <li>Absorption detection at structural levels</li>
-            <li>High-volume expansion classification</li>
-            <li>Rejection candle highlighting</li>
-            <li>Hardcoded institutional thresholds</li>
-            <li>Built-in alerts for every signal</li>
+            <li>5 killzone sessions tracked</li>
+            <li>Session high/low pivots</li>
+            <li>Until Mitigated / Past Mitigation modes</li>
+            <li>Per-session colors and labels</li>
+            <li>Broken-pivot alerts</li>
           </ul>
         </div>
       </div>
 
       <div class="tool-card reveal">
         <div class="tool-image">
-          <div class="tool-image-text">
-            <span class="big">Inst. VWAPs</span>
-            // chart preview
-          </div>
+          <img src="OnlyTicksVWAP.png" alt="OnlyTicks VWAP chart preview" />
         </div>
         <div class="tool-meta">
-          <span class="tool-tag">// Levels</span>
-          <h3 class="tool-name">Institutional VWAPs</h3>
+          <span class="tool-tag">// Location</span>
+          <h3 class="tool-name">OnlyTicks VWAP</h3>
           <p class="tool-desc">
-            Multi-timeframe VWAP suite with up to 3&sigma; deviation bands. The same fair-value framework institutions use to time entries and exits.
+            RTH and Daily VWAPs with up to &plusmn;3&sigma; deviation bands. The mean-reversion framework institutions use to defend fair value.
           </p>
           <ul class="tool-features">
-            <li>Daily / Weekly / Monthly anchors</li>
-            <li>±1&sigma; / ±2&sigma; / ±3&sigma; deviation bands</li>
-            <li>Smart color regime detection</li>
-            <li>RTH-aware session calculations</li>
+            <li>RTH anchored (9:30&ndash;4:00 ET)</li>
+            <li>Daily anchored VWAP</li>
+            <li>&plusmn;1&sigma; / &plusmn;2&sigma; / &plusmn;3&sigma; bands per anchor</li>
+            <li>Full custom styling controls</li>
             <li>Cross-asset compatibility (NQ / ES / CL / GC)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-image">
+          <img src="OnlyTicksAbs.png" alt="OnlyTicks Absorption chart preview" />
+        </div>
+        <div class="tool-meta">
+          <span class="tool-tag">// Trigger</span>
+          <h3 class="tool-name">OnlyTicks Absorption</h3>
+          <p class="tool-desc">
+            Candle classifier that flags absorption and high-volume bars directly on price. The moment institutions defend a level &mdash; your green light.
+          </p>
+          <ul class="tool-features">
+            <li>High volume + absorption detection</li>
+            <li>Candle coloring on the main chart</li>
+            <li>No lower panel clutter</li>
+            <li>Hardcoded institutional thresholds</li>
+            <li>Built-in alerts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-image">
+          <img src="OnlyTicksLevels.png" alt="OnlyTicks Levels chart preview" />
+        </div>
+        <div class="tool-meta">
+          <span class="tool-tag">// Inventory</span>
+          <h3 class="tool-name">OnlyTicks Levels</h3>
+          <p class="tool-desc">
+            Volume-weighted average price of the RTH open and close auctions with &plusmn;&sigma; bands. Captures where institutional inventory was absorbed.
+          </p>
+          <ul class="tool-features">
+            <li>Opening window VWAP (9:30&ndash;9:35)</li>
+            <li>Closing window VWAP (15:55&ndash;16:00)</li>
+            <li>&plusmn;1&sigma; bands per window</li>
+            <li>Persist into next session</li>
+            <li>Independent mitigation per level</li>
           </ul>
         </div>
       </div>
@@ -1448,8 +1491,10 @@ footer.site-footer {
       <div class="pricing-period">/ Month · Cancel Anytime</div>
 
       <ul class="pricing-features">
-        <li><span class="check">✓</span> Volume Bars indicator (TradingView)</li>
-        <li><span class="check">✓</span> Institutional VWAPs indicator (TradingView)</li>
+        <li><span class="check">✓</span> OnlyTicks DOL indicator (TradingView)</li>
+        <li><span class="check">✓</span> OnlyTicks VWAP indicator (TradingView)</li>
+        <li><span class="check">✓</span> OnlyTicks Absorption indicator (TradingView)</li>
+        <li><span class="check">✓</span> OnlyTicks Levels indicator (TradingView)</li>
         <li><span class="check">✓</span> TradingView access via invite-only system</li>
         <li><span class="check">✓</span> Free indicator updates while subscribed</li>
         <li><span class="check">✓</span> Cancel anytime · access ends at period end</li>
@@ -1502,7 +1547,7 @@ footer.site-footer {
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-body">
-          No. The OnlyTicks Model V2 Indicator Bundle is tools-only. The KrabsLab mentorship and Discord community are separate offerings &mdash; this subscription gets you the two indicators and nothing else from the KrabsLab side.
+          No. The OnlyTicks Model V2 Indicator Bundle is tools-only. The KrabsLab mentorship and Discord community are separate offerings &mdash; this subscription gets you the four indicators and nothing else from the KrabsLab side.
         </div>
       </details>
 
@@ -1522,7 +1567,7 @@ footer.site-footer {
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-body">
-          Both indicators are built primarily for futures (NQ, ES, CL, GC) but work on any liquid TradingView symbol with reliable volume data. Most users run them on NQ and ES intraday.
+          All four indicators are built primarily for futures (NQ, ES, CL, GC) but work on any liquid TradingView symbol with reliable volume data. Most users run them on NQ and ES intraday.
         </div>
       </details>
     </div>
