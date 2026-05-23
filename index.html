@@ -625,6 +625,11 @@ img { max-width: 100%; display: block; }
   border-color: var(--purple);
   box-shadow: 0 30px 80px rgba(176, 38, 255, 0.2);
 }
+.tool-card-center {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 16px);
+}
 .tool-image {
   aspect-ratio: 16 / 10;
   background: linear-gradient(135deg, #1a0a2a 0%, #0a0410 100%);
@@ -976,6 +981,68 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   margin-top: 20px;
 }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 940px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+.pricing-grid .pricing-card {
+  max-width: none;
+  margin: 0;
+  width: 100%;
+  padding: 52px 40px;
+  display: flex;
+  flex-direction: column;
+}
+.pricing-grid .pricing-card .pricing-features { flex: 1; }
+.pricing-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #04140d;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 7px 20px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 4;
+  box-shadow: 0 6px 24px var(--green-glow);
+}
+.pricing-was {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+.pricing-was .strike {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-decoration: line-through;
+  text-decoration-color: var(--green);
+  text-decoration-thickness: 2px;
+}
+.pricing-was .save {
+  background: rgba(57, 255, 20, 0.12);
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
 
 /* ============ FAQ ============ */
 .faq {
@@ -1164,6 +1231,8 @@ footer.site-footer {
   .hero-stats { grid-template-columns: repeat(2, 1fr); margin-top: 60px; }
   .model-pillars { grid-template-columns: 1fr; }
   .tools-grid { grid-template-columns: 1fr; }
+  .tool-card-center { width: 100%; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 560px; }
   .results-grid { grid-template-columns: 1fr; }
   .how-steps { grid-template-columns: 1fr; gap: 40px; }
   .how-steps::before { display: none; }
@@ -1206,7 +1275,7 @@ footer.site-footer {
       <img src="krabs-mascot.png" alt="" class="brand-logo" />
       <span class="brand-text">KRABS<span>LAB</span></span>
     </a>
-    <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="header-cta">Get Access →</a>
+    <a href="https://members.anthonyslab.shop/checkout?plan=147907" class="header-cta">Get Access →</a>
   </div>
 </header>
 
@@ -1233,7 +1302,7 @@ footer.site-footer {
           // TRADINGVIEW READY · CANCEL ANYTIME
         </p>
         <div class="hero-cta-row">
-          <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary">
+          <a href="https://members.anthonyslab.shop/checkout?plan=147907" class="btn-primary">
             Get The Bundle
             <span class="arrow">→</span>
           </a>
@@ -1250,7 +1319,7 @@ footer.site-footer {
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-value"><span class="accent">4</span></div>
+        <div class="hero-stat-value"><span class="accent">5</span></div>
         <div class="hero-stat-label">Indicators</div>
       </div>
       <div class="hero-stat">
@@ -1328,7 +1397,7 @@ footer.site-footer {
         <span class="dot">◆</span> Indicator Engine <strong>Powered by Anthony's Lab</strong>
       </div>
       <div class="section-eyebrow">// The Tools</div>
-      <h2 class="display"><span class="chrome">Four Indicators.</span><br/><span class="chrome">One System.</span></h2>
+      <h2 class="display"><span class="chrome">Five Indicators.</span><br/><span class="chrome">One System.</span></h2>
       <p>The full institutional toolkit &mdash; built for TradingView, used by funded futures traders. Every indicator in the OnlyTicks Model V2, in your hands.</p>
     </div>
 
@@ -1404,11 +1473,31 @@ footer.site-footer {
             Identifies the institutional reference levels that anchor each trading session. Each level marks a moment of high-conviction defense and persists across sessions as a tested support, target, or rejection zone.
           </p>
           <ul class="tool-features">
-            <li>Multiple institutional levels per day</li>
-            <li>Reference bands around each level</li>
-            <li>Levels persist into the next session</li>
-            <li>Independent mitigation tracking per level</li>
-            <li>Full styling and customization</li>
+            <li>Key institutional reference levels, daily</li>
+            <li>True Day Open (ICT midnight open)</li>
+            <li>Levels extend and persist across sessions</li>
+            <li>Break alerts on the active levels</li>
+            <li>Full color and styling controls</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tool-card tool-card-center reveal">
+        <div class="tool-image">
+          <img src="OnlyTicksBias.png" alt="OnlyTicks Bias chart preview" />
+        </div>
+        <div class="tool-meta">
+          <span class="tool-tag">// Bias</span>
+          <h3 class="tool-name">OnlyTicks Bias</h3>
+          <p class="tool-desc">
+            Lock your higher-timeframe read to the chart. One switch flips between bullish and bearish, displayed as a clean color-coded box that stays visible while you trade.
+          </p>
+          <ul class="tool-features">
+            <li>One-switch bias (bull / bear / neutral)</li>
+            <li>Color-coded corner display</li>
+            <li>Custom text for every state</li>
+            <li>9 placement positions, fully sizable</li>
+            <li>Optional chart background tint</li>
           </ul>
         </div>
       </div>
@@ -1455,7 +1544,7 @@ footer.site-footer {
       <div class="how-step reveal">
         <div class="how-step-num">1</div>
         <h3>Subscribe</h3>
-        <p>Click below, complete checkout. $50/mo, cancel anytime from your account portal.</p>
+        <p>Click below and complete checkout &mdash; $50/mo or one-time lifetime. Monthly cancels anytime from your account portal.</p>
       </div>
       <div class="how-step reveal">
         <div class="how-step-num">2</div>
@@ -1476,36 +1565,74 @@ footer.site-footer {
   <div class="wrap">
     <div class="section-head reveal">
       <div class="section-eyebrow">// Bundle Access</div>
-      <h2 class="display"><span class="chrome">One Plan.</span><br/><span class="chrome">All The Tools.</span></h2>
+      <h2 class="display"><span class="chrome">Two Plans.</span><br/><span class="chrome">All The Tools.</span></h2>
     </div>
 
-    <div class="pricing-card reveal">
-      <div class="pricing-tag">// Indicator Bundle</div>
-      <div class="pricing-name">OnlyTicks Model <span class="v2">V2</span></div>
-      <div class="pricing-sub">VWAP + Absorption Framework</div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-tag">// Monthly</div>
+        <div class="pricing-name">OnlyTicks Model <span class="v2">V2</span></div>
+        <div class="pricing-sub">The Complete Toolkit</div>
 
-      <div class="pricing-amount">
-        <span class="pricing-currency">$</span>
-        <span class="pricing-price">50</span>
+        <div class="pricing-amount">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-price">50</span>
+        </div>
+        <div class="pricing-period">/ Month · Cancel Anytime</div>
+
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> OnlyTicks DOL indicator</li>
+          <li><span class="check">✓</span> OnlyTicks VWAP indicator</li>
+          <li><span class="check">✓</span> OnlyTicks Absorption indicator</li>
+          <li><span class="check">✓</span> OnlyTicks Levels indicator</li>
+          <li><span class="check">✓</span> OnlyTicks Bias indicator</li>
+          <li><span class="check">✓</span> Invite-only TradingView access</li>
+          <li><span class="check">✓</span> Free updates while subscribed</li>
+          <li><span class="check">✓</span> Cancel anytime · ends at period end</li>
+        </ul>
+
+        <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary" data-cta="memberful-checkout">
+          Start Subscription
+          <span class="arrow">→</span>
+        </a>
+
+        <p class="pricing-fine">// Secure checkout · Powered by Memberful</p>
       </div>
-      <div class="pricing-period">/ Month · Cancel Anytime</div>
 
-      <ul class="pricing-features">
-        <li><span class="check">✓</span> OnlyTicks DOL indicator (TradingView)</li>
-        <li><span class="check">✓</span> OnlyTicks VWAP indicator (TradingView)</li>
-        <li><span class="check">✓</span> OnlyTicks Absorption indicator (TradingView)</li>
-        <li><span class="check">✓</span> OnlyTicks Levels indicator (TradingView)</li>
-        <li><span class="check">✓</span> TradingView access via invite-only system</li>
-        <li><span class="check">✓</span> Free indicator updates while subscribed</li>
-        <li><span class="check">✓</span> Cancel anytime · access ends at period end</li>
-      </ul>
+      <div class="pricing-card reveal">
+        <div class="pricing-badge">Best Value</div>
+        <div class="pricing-tag">// Lifetime</div>
+        <div class="pricing-name">OnlyTicks Model <span class="v2">V2</span></div>
+        <div class="pricing-sub">The Complete Toolkit</div>
 
-      <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary" data-cta="memberful-checkout">
-        Start Subscription
-        <span class="arrow">→</span>
-      </a>
+        <div class="pricing-amount">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-price">800</span>
+        </div>
+        <div class="pricing-was">
+          <span class="strike">$1,000</span>
+          <span class="save">Save $200</span>
+        </div>
+        <div class="pricing-period">One-Time · Lifetime Access</div>
 
-      <p class="pricing-fine">// Secure checkout · Powered by Memberful</p>
+        <ul class="pricing-features">
+          <li><span class="check">✓</span> OnlyTicks DOL indicator</li>
+          <li><span class="check">✓</span> OnlyTicks VWAP indicator</li>
+          <li><span class="check">✓</span> OnlyTicks Absorption indicator</li>
+          <li><span class="check">✓</span> OnlyTicks Levels indicator</li>
+          <li><span class="check">✓</span> OnlyTicks Bias indicator</li>
+          <li><span class="check">✓</span> Invite-only TradingView access</li>
+          <li><span class="check">✓</span> Free updates &mdash; forever</li>
+          <li><span class="check">✓</span> One-time payment · never expires</li>
+        </ul>
+
+        <a href="https://members.anthonyslab.shop/checkout?plan=147907" class="btn-primary" data-cta="memberful-checkout-lifetime">
+          Get Lifetime Access
+          <span class="arrow">→</span>
+        </a>
+
+        <p class="pricing-fine">// Secure checkout · Powered by Memberful</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1547,7 +1674,7 @@ footer.site-footer {
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-body">
-          No. The OnlyTicks Model V2 Indicator Bundle is tools-only. The KrabsLab mentorship and Discord community are separate offerings &mdash; this subscription gets you the four indicators and nothing else from the KrabsLab side.
+          No. The OnlyTicks Model V2 Indicator Bundle is tools-only. The KrabsLab mentorship and Discord community are separate offerings &mdash; this subscription gets you the five indicators and nothing else from the KrabsLab side.
         </div>
       </details>
 
@@ -1567,7 +1694,7 @@ footer.site-footer {
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-body">
-          All four indicators are built primarily for futures (NQ, ES, CL, GC) but work on any liquid TradingView symbol with reliable volume data. Most users run them on NQ and ES intraday.
+          All five indicators are built primarily for futures (NQ, ES, CL, GC) but work on any liquid TradingView symbol with reliable volume data. Most users run them on NQ and ES intraday.
         </div>
       </details>
     </div>
@@ -1578,8 +1705,8 @@ footer.site-footer {
 <section class="section final-cta">
   <div class="wrap">
     <h2 class="display reveal"><span class="chrome">Run The</span><br/><span class="chrome">Model.</span></h2>
-    <p class="reveal">The same tools, the same framework, the same setups. $50/mo, cancel anytime.</p>
-    <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary reveal">
+    <p class="reveal">The same tools, the same framework, the same setups. $50/mo or lifetime access.</p>
+    <a href="https://members.anthonyslab.shop/checkout?plan=147907" class="btn-primary reveal">
       Get The Bundle
       <span class="arrow">→</span>
     </a>
