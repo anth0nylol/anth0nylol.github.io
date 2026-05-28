@@ -698,6 +698,51 @@ img { max-width: 100%; display: block; }
   margin-bottom: 16px;
   line-height: 1;
 }
+.tool-card-locked {
+  border-color: rgba(176, 38, 255, 0.5);
+}
+.tool-card-locked:hover {
+  border-color: var(--purple);
+  box-shadow: 0 30px 80px rgba(176, 38, 255, 0.28);
+}
+.tool-card-locked .tool-image img {
+  filter: saturate(0.85) brightness(0.7);
+}
+.tool-exclusive-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  background: var(--purple);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 7px 14px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  box-shadow: 0 6px 24px rgba(176, 38, 255, 0.45);
+}
+.tool-lock-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(176, 38, 255, 0.35);
+  border-radius: 12px;
+  background: rgba(176, 38, 255, 0.07);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  line-height: 1.5;
+}
+.tool-lock-note .lock-ico {
+  font-size: 14px;
+  flex-shrink: 0;
+}
 .tool-desc {
   color: var(--text-mute);
   font-size: 15px;
@@ -1320,7 +1365,7 @@ footer.site-footer {
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-value"><span class="accent">5</span></div>
+        <div class="hero-stat-value"><span class="accent">4</span></div>
         <div class="hero-stat-label">Indicators</div>
       </div>
       <div class="hero-stat">
@@ -1398,7 +1443,7 @@ footer.site-footer {
         <span class="dot">◆</span> Indicator Engine <strong>Powered by Anthony's Lab</strong>
       </div>
       <div class="section-eyebrow">// The Tools</div>
-      <h2 class="display"><span class="chrome">Five Indicators.</span><br/><span class="chrome">One System.</span></h2>
+      <h2 class="display"><span class="chrome">The Tools.</span><br/><span class="chrome">One System.</span></h2>
       <p>The full institutional toolkit &mdash; built for TradingView, used by funded futures traders. Every indicator in the OnlyTicks Model V2, in your hands.</p>
     </div>
 
@@ -1443,7 +1488,8 @@ footer.site-footer {
         </div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card tool-card-locked reveal">
+        <div class="tool-exclusive-badge">🔒 Mentorship Exclusive</div>
         <div class="tool-image">
           <img src="OnlyTicksAbs.png" alt="OnlyTicks Absorption chart preview" />
         </div>
@@ -1451,15 +1497,12 @@ footer.site-footer {
           <span class="tool-tag">// Trigger</span>
           <h3 class="tool-name">OnlyTicks Absorption</h3>
           <p class="tool-desc">
-            Candle classifier that flags absorption and high-volume bars directly on price. The moment institutions defend a level &mdash; your green light.
+            Candle classifier that flags absorption and high-volume bars directly on price. The moment institutions defend a level &mdash; your green light. The trigger that completes the model.
           </p>
-          <ul class="tool-features">
-            <li>High volume + absorption detection</li>
-            <li>Candle coloring on the main chart</li>
-            <li>No lower panel clutter</li>
-            <li>Hardcoded institutional thresholds</li>
-            <li>Built-in alerts</li>
-          </ul>
+          <div class="tool-lock-note">
+            <span class="lock-ico">🔒</span>
+            <span>Reserved for KrabsLab mentorship students. Not included in the indicator bundle.</span>
+          </div>
         </div>
       </div>
 
@@ -1584,7 +1627,6 @@ footer.site-footer {
         <ul class="pricing-features">
           <li><span class="check">✓</span> OnlyTicks DOL indicator</li>
           <li><span class="check">✓</span> OnlyTicks VWAP indicator</li>
-          <li><span class="check">✓</span> OnlyTicks Absorption indicator</li>
           <li><span class="check">✓</span> OnlyTicks Levels indicator</li>
           <li><span class="check">✓</span> OnlyTicks Bias indicator</li>
           <li><span class="check">✓</span> Invite-only TradingView access</li>
@@ -1619,7 +1661,6 @@ footer.site-footer {
         <ul class="pricing-features">
           <li><span class="check">✓</span> OnlyTicks DOL indicator</li>
           <li><span class="check">✓</span> OnlyTicks VWAP indicator</li>
-          <li><span class="check">✓</span> OnlyTicks Absorption indicator</li>
           <li><span class="check">✓</span> OnlyTicks Levels indicator</li>
           <li><span class="check">✓</span> OnlyTicks Bias indicator</li>
           <li><span class="check">✓</span> Invite-only TradingView access</li>
@@ -1675,7 +1716,7 @@ footer.site-footer {
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-body">
-          No. The OnlyTicks Model V2 Indicator Bundle is tools-only. The KrabsLab mentorship and Discord community are separate offerings &mdash; this subscription gets you the five indicators and nothing else from the KrabsLab side.
+          No. The OnlyTicks Model V2 Indicator Bundle is tools-only. The KrabsLab mentorship and Discord community are separate offerings &mdash; this subscription gets you the four bundle indicators and nothing else from the KrabsLab side. The Absorption indicator is reserved for mentorship students.
         </div>
       </details>
 
@@ -1695,7 +1736,7 @@ footer.site-footer {
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-body">
-          All five indicators are built primarily for futures (NQ, ES, CL, GC) but work on any liquid TradingView symbol with reliable volume data. Most users run them on NQ and ES intraday.
+          All of the OnlyTicks indicators are built primarily for futures (NQ, ES, CL, GC) but work on any liquid TradingView symbol with reliable volume data. Most users run them on NQ and ES intraday.
         </div>
       </details>
     </div>
