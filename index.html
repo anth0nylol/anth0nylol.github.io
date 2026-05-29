@@ -1311,6 +1311,240 @@ footer.site-footer {
   opacity: 1;
   transform: translateY(0);
 }
+/* ============ MODAL ============ */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+.modal[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 2, 12, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+.modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 560px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-deep) 100%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 36px 32px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 60px rgba(176, 38, 255, 0.18);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal[aria-hidden="false"] .modal-dialog {
+  transform: translateY(0) scale(1);
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.modal-close:hover {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.modal-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--green);
+  text-transform: uppercase;
+  text-shadow: 0 0 8px var(--green-glow);
+  margin-bottom: 10px;
+}
+.modal-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 26px;
+}
+.modal-option {
+  position: relative;
+  display: block;
+  padding: 22px 56px 22px 24px;
+  margin-bottom: 14px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.modal-option:hover {
+  border-color: var(--purple);
+  background: rgba(176, 38, 255, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(176, 38, 255, 0.18);
+}
+.modal-option-featured {
+  border-color: rgba(57, 255, 20, 0.45);
+  background: rgba(57, 255, 20, 0.04);
+}
+.modal-option-featured:hover {
+  border-color: var(--green);
+  background: rgba(57, 255, 20, 0.08);
+  box-shadow: 0 16px 40px rgba(57, 255, 20, 0.22);
+}
+.modal-option-badge {
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  background: var(--green);
+  color: #04140d;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px var(--green-glow);
+}
+.modal-option-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.modal-option-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.modal-option-meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-bottom: 6px;
+}
+.modal-option-price {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  color: var(--purple);
+  line-height: 1;
+}
+.modal-option-featured .modal-option-price {
+  color: var(--green);
+}
+.modal-option-period {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+  margin-left: 4px;
+}
+.modal-option-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+.modal-option-note s {
+  color: var(--text);
+  text-decoration: line-through;
+  text-decoration-color: var(--green);
+  margin-right: 4px;
+}
+.modal-option-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+.modal-option-arrow {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: var(--text-dim);
+  transition: color 0.2s, transform 0.2s;
+}
+.modal-option:hover .modal-option-arrow {
+  color: var(--purple);
+  transform: translateY(-50%) translateX(4px);
+}
+.modal-option-featured:hover .modal-option-arrow {
+  color: var(--green);
+}
+.modal-fine {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 18px;
+}
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Lock-card mentorship CTA */
+.tool-lock-cta {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--purple);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(176, 38, 255, 0.45);
+  padding-bottom: 2px;
+  text-transform: uppercase;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tool-lock-cta:hover {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+@media (max-width: 768px) {
+  .modal-dialog { padding: 32px 22px 24px; max-height: 96vh; }
+  .modal-title { font-size: 24px; }
+  .modal-option { padding: 18px 48px 18px 18px; }
+  .modal-option-arrow { right: 16px; font-size: 18px; }
+}
 </style>
 </head>
 <body>
@@ -1321,7 +1555,7 @@ footer.site-footer {
       <img src="krabs-mascot.png" alt="" class="brand-logo" />
       <span class="brand-text">KRABS<span>LAB</span></span>
     </a>
-    <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="header-cta">Get Access →</a>
+    <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="header-cta" data-modal-trigger>Get Access →</a>
   </div>
 </header>
 
@@ -1348,7 +1582,7 @@ footer.site-footer {
           // TRADINGVIEW READY · CANCEL ANYTIME
         </p>
         <div class="hero-cta-row">
-          <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary">
+          <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary" data-modal-trigger>
             Get The Bundle
             <span class="arrow">→</span>
           </a>
@@ -1503,6 +1737,7 @@ footer.site-footer {
             <span class="lock-ico">🔒</span>
             <span>Reserved for KrabsLab mentorship students. Not included in the indicator bundle.</span>
           </div>
+          <a href="https://krabslab.com/mentorship" target="_blank" rel="noopener noreferrer" class="tool-lock-cta">→ Book a qualification call</a>
         </div>
       </div>
 
@@ -1748,7 +1983,7 @@ footer.site-footer {
   <div class="wrap">
     <h2 class="display reveal"><span class="chrome">Run The</span><br/><span class="chrome">Model.</span></h2>
     <p class="reveal">The same tools, the same framework, the same setups. $50/mo or lifetime access.</p>
-    <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary reveal">
+    <a href="https://members.anthonyslab.shop/checkout?plan=147784" class="btn-primary reveal" data-modal-trigger>
       Get The Bundle
       <span class="arrow">→</span>
     </a>
@@ -1815,6 +2050,83 @@ document.querySelectorAll('.model-pillars, .tools-grid, .results-grid, .how-step
     el.style.transitionDelay = (i * 80) + 'ms';
   });
 });
+</script>
+
+<!-- ============ CHECKOUT CHOICE MODAL ============ -->
+<div id="bundle-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bundle-modal-title">
+  <div class="modal-backdrop" data-modal-close></div>
+  <div class="modal-dialog">
+    <button class="modal-close" data-modal-close aria-label="Close">✕</button>
+    <div class="modal-eyebrow">// Choose Your Path</div>
+    <h3 id="bundle-modal-title" class="modal-title">How Do You Want OnlyTicks?</h3>
+
+    <a class="modal-option" href="https://members.anthonyslab.shop/checkout?plan=147784">
+      <div class="modal-option-tag">// Monthly Bundle</div>
+      <div class="modal-option-name">Indicator Bundle</div>
+      <div class="modal-option-meta">
+        <span class="modal-option-price">$50<span class="modal-option-period">/mo</span></span>
+        <span class="modal-option-note">Cancel anytime</span>
+      </div>
+      <div class="modal-option-desc">4 OnlyTicks indicators &middot; TradingView access</div>
+      <span class="modal-option-arrow">→</span>
+    </a>
+
+    <a class="modal-option modal-option-featured" href="https://members.anthonyslab.shop/checkout?plan=147907">
+      <span class="modal-option-badge">★ Best Value</span>
+      <div class="modal-option-tag">// Lifetime Bundle</div>
+      <div class="modal-option-name">Indicator Bundle</div>
+      <div class="modal-option-meta">
+        <span class="modal-option-price">$800<span class="modal-option-period">one-time</span></span>
+        <span class="modal-option-note"><s>$1,000</s> Save $200</span>
+      </div>
+      <div class="modal-option-desc">4 OnlyTicks indicators &middot; TradingView access &middot; Forever</div>
+      <span class="modal-option-arrow">→</span>
+    </a>
+
+    <a class="modal-option" href="https://krabslab.com/mentorship" target="_blank" rel="noopener noreferrer">
+      <div class="modal-option-tag">// Mentorship</div>
+      <div class="modal-option-name">Bundle + Absorption</div>
+      <div class="modal-option-meta">
+        <span class="modal-option-note">Includes Absorption indicator + 1-on-1 coaching</span>
+      </div>
+      <div class="modal-option-desc">Book a qualification call with KrabsLab</div>
+      <span class="modal-option-arrow">→</span>
+    </a>
+
+    <p class="modal-fine">// Secure checkout &middot; Powered by Memberful &middot; Mentorship via KrabsLab</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var modal = document.getElementById('bundle-modal');
+  if (!modal) return;
+
+  var triggers = document.querySelectorAll('[data-modal-trigger]');
+  var closers = modal.querySelectorAll('[data-modal-close]');
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+  }
+  function closeModal() {
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  triggers.forEach(function(t) { t.addEventListener('click', openModal); });
+  closers.forEach(function(c) { c.addEventListener('click', closeModal); });
+  modal.querySelectorAll('.modal-option').forEach(function(opt) {
+    opt.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+      closeModal();
+    }
+  });
+})();
 </script>
 
 </body>
